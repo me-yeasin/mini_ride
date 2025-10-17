@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Ride | Log back in</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      .surface-card {
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: linear-gradient(155deg, rgba(15, 23, 42, 0.86), rgba(15, 23, 42, 0.58));
+        box-shadow: 0 32px 80px -40px rgba(56, 189, 248, 0.4);
+        backdrop-filter: blur(22px);
+      }
+
+      .surface-panel {
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        background: linear-gradient(160deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.64));
+        box-shadow: 0 24px 60px -32px rgba(15, 118, 230, 0.32);
+        backdrop-filter: blur(18px);
+      }
+
+      .input-field {
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        color: rgba(226, 232, 240, 0.95);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: rgba(56, 189, 248, 0.65);
+        box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+      }
+
+      .primary-btn {
+        background: linear-gradient(120deg, #0ea5e9, #38bdf8);
+        color: #0f172a;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .primary-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 30px 70px -25px rgba(14, 165, 233, 0.55);
+        cursor: pointer;
+      }
+
+      .secondary-link {
+        color: rgba(148, 163, 184, 0.85);
+        transition: color 0.3s ease;
+      }
+
+      .secondary-link:hover {
+        color: rgba(226, 232, 240, 0.9);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+    <div class="absolute inset-0">
+      <div class="absolute left-1/2 top-[-12rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-sky-500/10 blur-3xl"></div>
+      <div class="absolute bottom-[-10rem] right-[-6rem] h-[26rem] w-[26rem] rounded-full bg-emerald-500/10 blur-3xl"></div>
+    </div>
+
+    <main class="relative mx-auto flex min-h-screen max-w-5xl flex-col justify-center gap-16 px-6 py-16 lg:flex-row lg:items-center lg:px-10">
+      <section class="max-w-xl space-y-8">
+        <div class="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-sky-300">
+          <span class="h-px w-10 bg-sky-500/40"></span>
+          <span>Welcome back</span>
+        </div>
+        <h1 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
+          Log in to manage your rides.
+        </h1>
+        <p class="text-base text-slate-300">
+          Access upcoming requests, view confirmations, and stay synced with your community. Secure access keeps your journey organized.
+        </p>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl surface-panel p-4">
+            <p class="text-sm uppercase tracking-widest text-slate-400">Active riders</p>
+            <p class="mt-2 text-2xl font-semibold text-white">1.4k</p>
+          </div>
+          <div class="rounded-2xl surface-panel p-4">
+            <p class="text-sm uppercase tracking-widest text-slate-400">Requests today</p>
+            <p class="mt-2 text-2xl font-semibold text-white">320</p>
+          </div>
+          <div class="rounded-2xl surface-panel p-4">
+            <p class="text-sm uppercase tracking-widest text-slate-400">Avg. response</p>
+            <p class="mt-2 text-2xl font-semibold text-white">2.8 min</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full max-w-md">
+        <div class="surface-card rounded-3xl p-10">
+          <h2 class="text-2xl font-semibold text-white">Mini Ride dashboard</h2>
+          <p class="mt-2 text-sm text-slate-300">
+            Enter the email and password you used at signup to continue.
+          </p>
+          <form method="post" class="mt-8 space-y-6">
+            {{ form.hidden_tag() }}
+            <div class="space-y-2">
+              {{ form.email.label(class_="text-sm font-medium text-slate-200") }}
+              {{ form.email(class_="input-field w-full rounded-xl px-4 py-3 text-base") }}
+              {% for error in form.email.errors %}
+              <p class="text-sm text-rose-400">{{ error }}</p>
+              {% endfor %}
+            </div>
+            <div class="space-y-2">
+              {{ form.password.label(class_="text-sm font-medium text-slate-200") }}
+              {{ form.password(class_="input-field w-full rounded-xl px-4 py-3 text-base") }}
+              {% for error in form.password.errors %}
+              <p class="text-sm text-rose-400">{{ error }}</p>
+              {% endfor %}
+            </div>
+            {{ form.submit(class_="primary-btn w-full rounded-full px-6 py-3 text-base cursor-pointer") }}
+          </form>
+          <p class="mt-6 text-center text-sm text-slate-400">
+            Need an account? <a class="secondary-link" href="{{ url_for('signup') }}">Join the network</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

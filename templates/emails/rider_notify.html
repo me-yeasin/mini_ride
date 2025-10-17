@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial, sans-serif; color: #1e293b;">
+    <h2 style="color: #0ea5e9;">Mini Ride alert</h2>
+    <p>Hi {{ rider.name }},</p>
+    <p>
+      A passenger needs a lift. Here are the details:
+    </p>
+    <ul>
+      <li><strong>Passenger:</strong> {{ ride.passenger_name }}</li>
+      <li><strong>Pickup:</strong> {{ ride.pickup }}</li>
+      <li><strong>Destination:</strong> {{ ride.destination }}</li>
+    </ul>
+    <p>Review and accept the request below.</p>
+    <p style="margin: 20px 0;">
+      <a
+        href="{{ approve_link }}"
+        style="display: inline-block; padding: 12px 18px; border-radius: 999px; background-color: #10b981; color: #0f172a; font-weight: 600; text-decoration: none;"
+        >Approve request</a
+      >
+    </p>
+    <p>
+      Need more detail first?
+      <a href="{{ review_link }}">Open the request page</a>
+      to view and accept later.
+    </p>
+    <p>Thanks for helping riders move!</p>
+  </body>
+</html>

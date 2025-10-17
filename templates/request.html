@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Ride | Passenger request</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-100">
+    <main class="mx-auto mt-20 max-w-2xl rounded-xl bg-white p-10 shadow">
+      <h1 class="mb-6 text-3xl font-semibold text-slate-800">Request a ride</h1>
+      <form method="post" class="grid gap-5 md:grid-cols-2">
+        {{ form.hidden_tag() }}
+        <div class="md:col-span-1">
+          {{ form.passenger_name.label(class_="block text-sm font-medium text-slate-600") }}
+          {{ form.passenger_name(class_="mt-1 w-full rounded border border-slate-300 px-3 py-2") }}
+          {% for error in form.passenger_name.errors %}
+          <p class="text-sm text-red-500">{{ error }}</p>
+          {% endfor %}
+        </div>
+        <div class="md:col-span-1">
+          {{ form.passenger_email.label(class_="block text-sm font-medium text-slate-600") }}
+          {{ form.passenger_email(class_="mt-1 w-full rounded border border-slate-300 px-3 py-2") }}
+          {% for error in form.passenger_email.errors %}
+          <p class="text-sm text-red-500">{{ error }}</p>
+          {% endfor %}
+        </div>
+        <div class="md:col-span-1">
+          {{ form.pickup.label(class_="block text-sm font-medium text-slate-600") }}
+          {{ form.pickup(class_="mt-1 w-full rounded border border-slate-300 px-3 py-2") }}
+          {% for error in form.pickup.errors %}
+          <p class="text-sm text-red-500">{{ error }}</p>
+          {% endfor %}
+        </div>
+        <div class="md:col-span-1">
+          {{ form.destination.label(class_="block text-sm font-medium text-slate-600") }}
+          {{ form.destination(class_="mt-1 w-full rounded border border-slate-300 px-3 py-2") }}
+          {% for error in form.destination.errors %}
+          <p class="text-sm text-red-500">{{ error }}</p>
+          {% endfor %}
+        </div>
+        <div class="md:col-span-2">
+          {{ form.submit(class_="w-full rounded bg-emerald-600 py-3 text-white hover:bg-emerald-700 cursor-pointer") }}
+        </div>
+      </form>
+      <p class="mt-8 text-center text-sm text-slate-500">
+        Riders can <a class="text-emerald-600" href="{{ url_for('signup') }}">join the fleet</a>.
+      </p>
+    </main>
+  </body>
+</html>

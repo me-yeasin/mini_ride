@@ -1,0 +1,7 @@
+flask
+flask-pymongo
+flask-mail
+flask-wtf
+python-dotenv
+email_validator
+gunicorn

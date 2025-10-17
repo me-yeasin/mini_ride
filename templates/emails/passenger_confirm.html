@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial, sans-serif; color: #1e293b;">
+    <h2 style="color: #10b981;">Mini Ride update</h2>
+    <p>Hi {{ ride.passenger_name }},</p>
+    {% if ride.status == "accepted" %}
+    <p>
+      Your ride has been accepted by
+      <strong>{{ ride.accepted_by.name or "a nearby rider" }}</strong>.
+    </p>
+    <p>The rider will reach out using the contact information you provided.</p>
+    {% else %}
+    <p>We received your request and notified nearby riders. Hang tight and we'll email you once a rider confirms.</p>
+    {% endif %}
+    <p>
+      <strong>Pickup:</strong> {{ ride.pickup }}<br />
+      <strong>Destination:</strong> {{ ride.destination }}
+    </p>
+    <p>Thanks for choosing Mini Ride.</p>
+  </body>
+</html>
