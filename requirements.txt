@@ -5,3 +5,4 @@ flask-wtf
 python-dotenv
 email_validator
 gunicorn
+dnspython
